@@ -19,8 +19,8 @@ Todo o aprendizado prático é feito com **LocalStack** (ambiente AWS local e gr
 
 ```
 Módulo 1 → Fundamentos e setup do ambiente    ✅ Concluído
-Módulo 2 → IAM — controle de acesso
-Módulo 3 → VPC — rede na nuvem
+Módulo 2 → IAM — controle de acesso           ✅ Concluído
+Módulo 3 → VPC — rede na nuvem               🔄 Em andamento
 Módulo 4 → EC2 — servidores virtuais
 Módulo 5 → S3 — armazenamento de objetos
 Módulo 6 → Segurança — Security Groups, CloudTrail
@@ -87,7 +87,7 @@ aws-cloud-practitioner/
 ### Módulo 1 — Fundamentos & Setup do ambiente
 **Status:** ✅ Concluído
 
-Instalação do ambiente de estudo com LocalStack, AWS CLI e awslocal. Primeiro contato com a CLI da AWS.
+Instalação do ambiente de estudo com LocalStack, AWS CLI e awslocal. Primeiro contato com a CLI da AWS criando um bucket S3.
 
 | Entrega | Tipo | Descrição |
 |---|---|---|
@@ -96,15 +96,23 @@ Instalação do ambiente de estudo com LocalStack, AWS CLI e awslocal. Primeiro 
 ---
 
 ### Módulo 2 — IAM — Controle de acesso
-**Status:** 🔄 Em andamento
+**Status:** ✅ Concluído
 
-Gerenciamento de identidades e acessos — o coração da segurança na AWS. Paralelo direto com `chmod` e grupos do Linux.
+Gerenciamento de identidades e acessos — o coração da segurança na AWS. Criação de usuários, grupos e políticas via CLI. Paralelo direto com `chmod` e grupos do Linux.
 
 | Entrega | Tipo | Descrição |
 |---|---|---|
-| `criar-politica.sh` | Script | Cria usuário, grupo e política via CLI |
-| `iam-guide.md` | Writeup | Users, groups, roles e policies explicados |
+| `iam-guide.md` | Writeup | Users, groups, policies e ARN explicados |
+| `criar-politica.sh` | Script | Automatiza criação de usuário, grupo e política |
 | `least-privilege.md` | Desafio | Aplicando o princípio do menor privilégio |
+
+**Conceitos cobertos:**
+- IAM User, Group, Policy e Role — e o paralelo com Linux
+- Managed policies da AWS vs custom policies
+- Estrutura de um documento de política JSON (`Effect`, `Action`, `Resource`)
+- ARN — endereço único de qualquer recurso na AWS
+- Princípio do menor privilégio — cada identidade recebe só o que precisa
+- Por que políticas no grupo são preferíveis a políticas diretas no usuário
 
 ---
 
@@ -165,8 +173,8 @@ Security Groups, NACLs, CloudTrail e boas práticas de segurança na AWS.
 | `localstack` | Simulador de serviços AWS local e gratuito |
 | `aws` / `awslocal` | AWS CLI — interface de linha de comando da AWS |
 | `docker` | Container que executa o LocalStack |
-| `s3` | Armazenamento de objetos |
 | `iam` | Controle de identidade e acesso |
+| `s3` | Armazenamento de objetos |
 | `ec2` | Servidores virtuais na nuvem |
 | `vpc` | Rede virtual privada |
 
@@ -224,7 +232,7 @@ docker run -d \
 
 ```bash
 curl http://localhost:4566/_localstack/health
-awslocal s3 ls
+awslocal iam list-users
 ```
 
 > **Atenção:** o token do LocalStack é pessoal — nunca commite no repositório. Use variáveis de ambiente ou um arquivo `.env` no `.gitignore`.
@@ -235,7 +243,7 @@ awslocal s3 ls
 
 - [x] Repositório criado e estruturado
 - [x] Módulo 1 concluído — ambiente configurado
-- [ ] Módulo 2 concluído — IAM
+- [x] Módulo 2 concluído — IAM
 - [ ] Módulo 3 concluído — VPC
 - [ ] Módulo 4 concluído — EC2
 - [ ] Módulo 5 concluído — S3
@@ -253,4 +261,4 @@ Aberto a feedbacks, sugestões e conexões!
 
 ---
 
-*Última atualização: 2026-04-11*
+*Última atualização: 2026-04-22*
