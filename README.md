@@ -1,29 +1,25 @@
-# ☁️ AWS Cloud Practitioner Portfolio
+# 🐧 Linux SysAdmin Portfolio
 
-> Repositório de aprendizado prático em computação em nuvem com AWS.  
-> Cada módulo contém writeups explicativos, comandos reais e desafios resolvidos.
+> Repositório de aprendizado prático em administração de servidores Linux.  
+> Cada fase contém scripts funcionais, writeups explicativos e desafios resolvidos.
 
 ---
 
 ## 👤 Sobre este repositório
 
-Continuação do [Linux SysAdmin Portfolio](https://github.com/johnthesec/linux-sysadmin-portfolio) — agora aplicando os mesmos conceitos de servidores, redes e segurança no ambiente de nuvem da AWS.
+Estou construindo habilidades reais de administração de servidores Linux de forma progressiva e documentada. Este portfólio registra minha evolução — do terminal básico até automação e deploy de servidores completos.
 
-Todo o aprendizado prático é feito com **LocalStack** (ambiente AWS local e gratuito) antes de migrar para a conta AWS Free Tier.
-
-**Objetivo final:** dominar os serviços fundamentais da AWS usados no dia a dia de sysadmins e engenheiros de infraestrutura, com evidências concretas de cada etapa.
+**Objetivo final:** dominar as ferramentas e práticas usadas por sysadmins no dia a dia, com evidências concretas de cada etapa.
 
 ---
 
 ## 🗺️ Roadmap de aprendizado
 
 ```
-Módulo 1 → Fundamentos e setup do ambiente    ✅ Concluído
-Módulo 2 → IAM — controle de acesso           ✅ Concluído
-Módulo 3 → VPC — rede na nuvem               🔄 Em andamento
-Módulo 4 → EC2 — servidores virtuais
-Módulo 5 → S3 — armazenamento de objetos
-Módulo 6 → Segurança — Security Groups, CloudTrail
+Fase 1 → Fundamentos do terminal          ✅ Concluída
+Fase 2 → Arquivos, usuários e permissões  ✅ Concluída
+Fase 3 → Rede, serviços e processos       ✅ Concluída
+Fase 4 → Automação e projetos finais
 ```
 
 ---
@@ -31,138 +27,116 @@ Módulo 6 → Segurança — Security Groups, CloudTrail
 ## 📁 Estrutura do repositório
 
 ```
-aws-cloud-practitioner/
+linux-sysadmin-portfolio/
 │
-├── README.md                                    ← você está aqui
+├── README.md                                ← você está aqui
 │
-├── modulo-1-fundamentos/
-│   └── writeups/
-│       └── setup-localstack.md                  ← instalação e configuração do ambiente
-│
-├── modulo-2-iam/
+├── fase-1-fundamentos/
 │   ├── scripts/
-│   │   └── criar-politica.sh                    ← criando usuário e política via CLI
+│   │   └── backup.sh                        ← backup de configs com timestamp
 │   ├── writeups/
-│   │   └── iam-guide.md                         ← users, groups, roles, policies
+│   │   └── filesystem-linux.md              ← hierarquia de diretórios explicada
 │   └── desafios/
-│       └── least-privilege.md                   ← princípio do menor privilégio
+│       └── find-grep-pipes.md               ← localização de arquivos com find e grep
 │
-├── modulo-3-vpc/
-│   ├── writeups/
-│   │   └── vpc-guide.md                         ← VPC, subnets, route tables, IGW
-│   └── desafios/
-│       └── vpc-do-zero.md                       ← criar VPC com subnet pública
-│
-├── modulo-4-ec2/
+├── fase-2-permissoes/
 │   ├── scripts/
-│   │   └── launch-ec2.sh                        ← subindo instância via CLI
+│   │   ├── gerenciar-acesso.sh              ← cria grupos, aplica e revoga permissões
+│   │   └── audit-permissions.sh             ← auditoria de permissões inseguras
 │   ├── writeups/
-│   │   └── ec2-guide.md                         ← tipos, AMIs, key pairs, Security Groups
+│   │   └── writeup-permissoes.md            ← chmod, chown, grupos, cadeia de acesso
 │   └── desafios/
-│       └── servidor-web-ec2.md                  ← nginx na EC2 com security group
+│       └── desafio-auditoria.md             ← auditoria de arquivos world-writable e SUID
 │
-├── modulo-5-s3/
+├── fase-3-rede-servicos/
 │   ├── scripts/
-│   │   └── s3-ops.sh                            ← upload, download, sync via CLI
+│   │   └── health-check.sh                  ← monitor de RAM, disco e serviços
+│   ├── configs/
+│   │   └── nginx.conf                       ← configuração comentada do nginx
 │   ├── writeups/
-│   │   └── s3-guide.md                          ← buckets, políticas, classes de storage
+│   │   └── writeup-fase3.md                 ← nginx, systemd, ufw e health check
 │   └── desafios/
-│       └── static-site-s3.md                    ← site estático hospedado no S3
+│       └── ssh-hardening.md                 ← hardening de SSH com chave ED25519
 │
-├── modulo-6-seguranca/
-│   ├── writeups/
-│   │   └── security-guide.md                    ← security groups, NACLs, CloudTrail
-│   └── desafios/
-│       └── hardening-ec2.md                     ← EC2 segura + SG bem configurado
+├── fase-4-automacao/
+│   ├── scripts/
+│   │   └── backup-rotativo.sh               ← backup diário com rotação de 7 dias
+│   ├── configs/
+│   │   └── crontab.txt                      ← agendamentos configurados
+│   └── lamp-setup/
+│       ├── install.sh                       ← instalação automatizada do LAMP
+│       ├── vhost.conf                       ← virtual host Apache configurado
+│       └── README.md                        ← guia completo do projeto final
 │
 └── cheatsheets/
-    ├── awscli-essencial.md                      ← referência rápida de comandos AWS CLI
-    └── troubleshooting.md                       ← erros comuns e como resolver
+    ├── comandos-essenciais.md               ← referência rápida de comandos
+    └── troubleshooting.md                   ← erros comuns e como resolver
 ```
 
 ---
 
-## 📚 Módulos em detalhe
+## 📚 Fases em detalhe
 
-### Módulo 1 — Fundamentos & Setup do ambiente
-**Status:** ✅ Concluído
+### Fase 1 — Fundamentos do terminal
+**Status:** ✅ Concluída
 
-Instalação do ambiente de estudo com LocalStack, AWS CLI e awslocal. Primeiro contato com a CLI da AWS criando um bucket S3.
+Foco em navegação, leitura de arquivos, uso de `find`, `grep` e pipes. Primeiro contato com scripting Bash.
 
 | Entrega | Tipo | Descrição |
 |---|---|---|
-| `setup-localstack.md` | Writeup | Instalação completa do ambiente de estudo |
+| `backup.sh` | Script | Copia arquivos de config com timestamp |
+| `filesystem-linux.md` | Writeup | Explica /etc, /var, /home, /bin |
+| `find-grep-pipes.md` | Desafio | Localiza logs e arquivos por conteúdo |
 
 ---
 
-### Módulo 2 — IAM — Controle de acesso
-**Status:** ✅ Concluído
+### Fase 2 — Arquivos, Usuários & Permissões
+**Status:** ✅ Concluída
 
-Gerenciamento de identidades e acessos — o coração da segurança na AWS. Criação de usuários, grupos e políticas via CLI. Paralelo direto com `chmod` e grupos do Linux.
+Leitura e modificação de permissões com `chmod` e `chown`, gerenciamento de grupos, controle de acesso por cadeia de diretórios, revogação de acessos e auditoria de segurança.
 
 | Entrega | Tipo | Descrição |
 |---|---|---|
-| `iam-guide.md` | Writeup | Users, groups, policies e ARN explicados |
-| `criar-politica.sh` | Script | Automatiza criação de usuário, grupo e política |
-| `least-privilege.md` | Desafio | Aplicando o princípio do menor privilégio |
+| `gerenciar-acesso.sh` | Script | Cria grupos, aplica e revoga permissões com flags |
+| `audit-permissions.sh` | Script | Auditoria de arquivos world-writable e SUID |
+| `writeup-permissoes.md` | Writeup | chmod, chown, notação octal, cadeia de acesso |
+| `desafio-auditoria.md` | Desafio | Auditoria de permissões inseguras com find |
+
+---
+
+### Fase 3 — Rede, Serviços & Processos
+**Status:** ✅ Concluída
+
+nginx, systemd, firewall com `ufw`, monitoramento de recursos e hardening de SSH.
+
+| Entrega | Tipo | Descrição |
+|---|---|---|
+| `health-check.sh` | Script | Monitor de RAM, disco e serviços com flags |
+| `nginx.conf` | Config | Configuração comentada do nginx |
+| `writeup-fase3.md` | Writeup | nginx, systemd, ufw e health check |
+| `ssh-hardening.md` | Desafio | Hardening de SSH com chave ED25519 |
 
 **Conceitos cobertos:**
-- IAM User, Group, Policy e Role — e o paralelo com Linux
-- Managed policies da AWS vs custom policies
-- Estrutura de um documento de política JSON (`Effect`, `Action`, `Resource`)
-- ARN — endereço único de qualquer recurso na AWS
-- Princípio do menor privilégio — cada identidade recebe só o que precisa
-- Por que políticas no grupo são preferíveis a políticas diretas no usuário
+- Modelo master/worker do nginx
+- Diagnóstico de conflito de porta com `ss -tlnp`
+- Controle de serviços com `systemctl` — start, stop, reload, restart, enable, disable
+- Diferença entre `reload` (mantém conexões) e `restart` (recria tudo)
+- Diferença entre `stop` (para agora) e `disable` (impede boot automático)
+- Firewall com `ufw` — política `deny incoming` por padrão
+- SSH restrito por IP — evita ataques de força bruta
+- Hardening de SSH — chave ED25519, sem senha, sem root login
 
 ---
 
-### Módulo 3 — VPC — Rede na nuvem
-**Status:** ⏳ Planejado
+### Fase 4 — Automação & Projeto Final
+**Status:** 🔜 Próxima fase
 
-Redes virtuais privadas na AWS — subnets, tabelas de roteamento e internet gateway.
-
-| Entrega | Tipo | Descrição |
-|---|---|---|
-| `vpc-guide.md` | Writeup | VPC, subnets públicas e privadas |
-| `vpc-do-zero.md` | Desafio | Criar VPC completa via CLI |
-
----
-
-### Módulo 4 — EC2 — Servidores virtuais
-**Status:** ⏳ Planejado
-
-Instâncias EC2, tipos de máquina, AMIs, key pairs e security groups. Equivalente ao nginx + systemd do Linux.
+`cron`, scripts avançados e deploy de um servidor LAMP completo como projeto integrador.
 
 | Entrega | Tipo | Descrição |
 |---|---|---|
-| `launch-ec2.sh` | Script | Sobe instância EC2 via CLI |
-| `ec2-guide.md` | Writeup | Tipos de instância, AMIs, key pairs |
-| `servidor-web-ec2.md` | Desafio | nginx na EC2 com security group correto |
-
----
-
-### Módulo 5 — S3 — Armazenamento de objetos
-**Status:** ⏳ Planejado
-
-Buckets, objetos, políticas de acesso e classes de armazenamento. Equivalente ao backup rotativo do Linux.
-
-| Entrega | Tipo | Descrição |
-|---|---|---|
-| `s3-ops.sh` | Script | Upload, download e sync via CLI |
-| `s3-guide.md` | Writeup | Buckets, políticas e classes de storage |
-| `static-site-s3.md` | Desafio | Hospedar site estático no S3 |
-
----
-
-### Módulo 6 — Segurança
-**Status:** ⏳ Planejado
-
-Security Groups, NACLs, CloudTrail e boas práticas de segurança na AWS.
-
-| Entrega | Tipo | Descrição |
-|---|---|---|
-| `security-guide.md` | Writeup | SGs, NACLs, CloudTrail explicados |
-| `hardening-ec2.md` | Desafio | EC2 endurecida com SG bem configurado |
+| `backup-rotativo.sh` | Script | Backup diário com retenção de 7 dias |
+| `lamp-setup/` | Projeto | Servidor Linux+Apache+MySQL+PHP do zero |
 
 ---
 
@@ -170,13 +144,16 @@ Security Groups, NACLs, CloudTrail e boas práticas de segurança na AWS.
 
 | Ferramenta | Uso |
 |---|---|
-| `localstack` | Simulador de serviços AWS local e gratuito |
-| `aws` / `awslocal` | AWS CLI — interface de linha de comando da AWS |
-| `docker` | Container que executa o LocalStack |
-| `iam` | Controle de identidade e acesso |
-| `s3` | Armazenamento de objetos |
-| `ec2` | Servidores virtuais na nuvem |
-| `vpc` | Rede virtual privada |
+| `bash` | Scripting e automação |
+| `find` / `grep` | Busca e filtragem de arquivos |
+| `chmod` / `chown` | Controle de permissões |
+| `groupadd` / `usermod` / `gpasswd` | Gerenciamento de usuários e grupos |
+| `nginx` | Servidor web |
+| `systemctl` | Gerenciamento de serviços |
+| `ufw` | Firewall e controle de portas |
+| `ss` | Monitoramento de portas e conexões |
+| `ssh` / `ssh-keygen` | Acesso remoto seguro e geração de chaves |
+| `cron` | Agendamento de tarefas |
 
 ---
 
@@ -185,80 +162,53 @@ Security Groups, NACLs, CloudTrail e boas práticas de segurança na AWS.
 Cada writeup segue esta estrutura:
 
 1. **Objetivo** — o que foi aprendido/resolvido
-2. **Contexto** — por que isso importa para um sysadmin/cloud engineer
+2. **Contexto** — por que isso importa para um sysadmin
 3. **Passo a passo** — comandos executados com explicação de cada flag
 4. **Erros que cometi** — o que deu errado e como resolvi
 5. **Resultado** — o que foi entregue/configurado
-6. **Referências** — documentação oficial e fontes usadas
+6. **Referências** — man pages e fontes usadas
 
 ---
 
-## 🚀 Como reproduzir o ambiente
+## 🚀 Como usar os scripts
 
-### Pré-requisitos
-
-- Docker instalado
-- Python 3.x e pip3
-- Conta gratuita em [localstack.cloud](https://app.localstack.cloud)
-
-### Instalação
+Clone o repositório e dê permissão de execução antes de rodar qualquer script:
 
 ```bash
-# AWS CLI oficial
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-unzip awscliv2.zip && sudo ./aws/install
+git clone https://github.com/seu-usuario/linux-sysadmin-portfolio.git
+cd linux-sysadmin-portfolio
 
-# awslocal e localstack CLI
-pip3 install awscli-local localstack --break-system-packages
+# Health check do servidor
+chmod +x fase-3-rede-servicos/scripts/health-check.sh
+./fase-3-rede-servicos/scripts/health-check.sh
 
-# Adicionar ao PATH
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc
+# Com flags
+./fase-3-rede-servicos/scripts/health-check.sh -s   # só serviços
+./fase-3-rede-servicos/scripts/health-check.sh -r   # só recursos
 ```
 
-### Subindo o LocalStack
-
-```bash
-export LOCALSTACK_AUTH_TOKEN=seu-token-aqui
-
-docker run -d \
-  --name localstack \
-  -p 4566:4566 \
-  -e LOCALSTACK_AUTH_TOKEN=$LOCALSTACK_AUTH_TOKEN \
-  localstack/localstack
-```
-
-### Verificando
-
-```bash
-curl http://localhost:4566/_localstack/health
-awslocal iam list-users
-```
-
-> **Atenção:** o token do LocalStack é pessoal — nunca commite no repositório. Use variáveis de ambiente ou um arquivo `.env` no `.gitignore`.
+> **Atenção:** scripts das fases 2 e 3 envolvem criação de usuários e alteração de serviços. Leia o writeup correspondente antes de executar em produção.
 
 ---
 
 ## 📈 Progresso
 
 - [x] Repositório criado e estruturado
-- [x] Módulo 1 concluído — ambiente configurado
-- [x] Módulo 2 concluído — IAM
-- [ ] Módulo 3 concluído — VPC
-- [ ] Módulo 4 concluído — EC2
-- [ ] Módulo 5 concluído — S3
-- [ ] Módulo 6 concluído — Segurança
+- [x] Fase 1 concluída
+- [x] Fase 2 concluída
+- [x] Fase 3 concluída
+- [ ] Fase 4 e projeto final concluídos
 
 ---
 
 ## 📬 Contato
 
-Feito por **[seu nome]** — estudando AWS para administração de infraestrutura em nuvem.  
+Feito por **[seu nome]** — estudando Linux para administração de servidores.  
 Aberto a feedbacks, sugestões e conexões!
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin)](https://linkedin.com/in/seu-perfil)
-[![GitHub](https://img.shields.io/badge/GitHub-black?style=flat&logo=github)](https://github.com/johnthesec)
+[![GitHub](https://img.shields.io/badge/GitHub-black?style=flat&logo=github)](https://github.com/seu-usuario)
 
 ---
 
-*Última atualização: 2026-04-22*
+*Última atualização: 2026-04-08*
