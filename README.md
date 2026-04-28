@@ -1,25 +1,28 @@
-# 🐧 Linux SysAdmin Portfolio
+# ☁️ AWS Cloud Practitioner Portfolio
 
-> Repositório de aprendizado prático em administração de servidores Linux.  
-> Cada fase contém scripts funcionais, writeups explicativos e desafios resolvidos.
+> Repositório de aprendizado prático em computação em nuvem com AWS.  
+> Cada módulo contém scripts funcionais, writeups explicativos e recursos criados via CLI.
 
 ---
 
 ## 👤 Sobre este repositório
 
-Estou construindo habilidades reais de administração de servidores Linux de forma progressiva e documentada. Este portfólio registra minha evolução — do terminal básico até automação e deploy de servidores completos.
+Estou construindo habilidades reais de administração em nuvem de forma progressiva e documentada. Este portfólio registra minha evolução — do ambiente local com LocalStack até infraestrutura real na AWS Free Tier.
 
-**Objetivo final:** dominar as ferramentas e práticas usadas por sysadmins no dia a dia, com evidências concretas de cada etapa.
+**Objetivo final:** dominar os serviços core da AWS usados por cloud administrators no dia a dia, com evidências concretas de cada etapa.
 
 ---
 
 ## 🗺️ Roadmap de aprendizado
 
 ```
-Fase 1 → Fundamentos do terminal          ✅ Concluída
-Fase 2 → Arquivos, usuários e permissões  ✅ Concluída
-Fase 3 → Rede, serviços e processos       ✅ Concluída
-Fase 4 → Automação e projetos finais
+Módulo 1 → Ambiente & S3 básico          ✅ Concluído
+Módulo 2 → IAM — Identidade e acesso     ✅ Concluído
+Módulo 3 → VPC — Rede privada na nuvem   ✅ Concluído
+Módulo 4 → EC2 — Máquinas virtuais       ⏳ Planejado
+Módulo 5 → S3 avançado                   ⏳ Planejado
+Módulo 6 → RDS — Banco de dados          ⏳ Planejado
+Módulo 7 → Projeto integrador            ⏳ Planejado
 ```
 
 ---
@@ -27,116 +30,146 @@ Fase 4 → Automação e projetos finais
 ## 📁 Estrutura do repositório
 
 ```
-linux-sysadmin-portfolio/
+aws-cloud-practitioner/
 │
-├── README.md                                ← você está aqui
+├── README.md                                    ← você está aqui
 │
-├── fase-1-fundamentos/
+├── modulo-1-fundamentos/
+│   └── writeups/
+│       └── setup-localstack.md                  ← ambiente AWS local configurado
+│
+├── modulo-2-iam/
+│   └── writeups/
+│       └── iam-guide.md                         ← users, groups, policies via CLI
+│
+├── modulo-3-vpc/
 │   ├── scripts/
-│   │   └── backup.sh                        ← backup de configs com timestamp
-│   ├── writeups/
-│   │   └── filesystem-linux.md              ← hierarquia de diretórios explicada
-│   └── desafios/
-│       └── find-grep-pipes.md               ← localização de arquivos com find e grep
+│   │   └── vpc-setup.sh                         ← cria e destrói infraestrutura de rede
+│   └── writeups/
+│       └── vpc-guide.md                         ← VPC, subnets, IGW, route tables
 │
-├── fase-2-permissoes/
+├── modulo-4-ec2/
 │   ├── scripts/
-│   │   ├── gerenciar-acesso.sh              ← cria grupos, aplica e revoga permissões
-│   │   └── audit-permissions.sh             ← auditoria de permissões inseguras
-│   ├── writeups/
-│   │   └── writeup-permissoes.md            ← chmod, chown, grupos, cadeia de acesso
-│   └── desafios/
-│       └── desafio-auditoria.md             ← auditoria de arquivos world-writable e SUID
+│   │   └── (em breve)
+│   └── writeups/
+│       └── (em breve)
 │
-├── fase-3-rede-servicos/
-│   ├── scripts/
-│   │   └── health-check.sh                  ← monitor de RAM, disco e serviços
-│   ├── configs/
-│   │   └── nginx.conf                       ← configuração comentada do nginx
-│   ├── writeups/
-│   │   └── writeup-fase3.md                 ← nginx, systemd, ufw e health check
-│   └── desafios/
-│       └── ssh-hardening.md                 ← hardening de SSH com chave ED25519
+├── modulo-5-s3/
+│   └── writeups/
+│       └── (em breve)
 │
-├── fase-4-automacao/
-│   ├── scripts/
-│   │   └── backup-rotativo.sh               ← backup diário com rotação de 7 dias
-│   ├── configs/
-│   │   └── crontab.txt                      ← agendamentos configurados
-│   └── lamp-setup/
-│       ├── install.sh                       ← instalação automatizada do LAMP
-│       ├── vhost.conf                       ← virtual host Apache configurado
-│       └── README.md                        ← guia completo do projeto final
+├── modulo-6-rds/
+│   └── writeups/
+│       └── (em breve)
 │
-└── cheatsheets/
-    ├── comandos-essenciais.md               ← referência rápida de comandos
-    └── troubleshooting.md                   ← erros comuns e como resolver
+└── modulo-7-projeto/
+    └── README.md                                ← arquitetura completa integrada
 ```
 
 ---
 
-## 📚 Fases em detalhe
+## 📚 Módulos em detalhe
 
-### Fase 1 — Fundamentos do terminal
-**Status:** ✅ Concluída
+### Módulo 1 — Ambiente & S3 básico
+**Status:** ✅ Concluído
 
-Foco em navegação, leitura de arquivos, uso de `find`, `grep` e pipes. Primeiro contato com scripting Bash.
-
-| Entrega | Tipo | Descrição |
-|---|---|---|
-| `backup.sh` | Script | Copia arquivos de config com timestamp |
-| `filesystem-linux.md` | Writeup | Explica /etc, /var, /home, /bin |
-| `find-grep-pipes.md` | Desafio | Localiza logs e arquivos por conteúdo |
-
----
-
-### Fase 2 — Arquivos, Usuários & Permissões
-**Status:** ✅ Concluída
-
-Leitura e modificação de permissões com `chmod` e `chown`, gerenciamento de grupos, controle de acesso por cadeia de diretórios, revogação de acessos e auditoria de segurança.
+Configuração do ambiente de desenvolvimento AWS local com LocalStack, AWS CLI e primeiro contato com S3.
 
 | Entrega | Tipo | Descrição |
 |---|---|---|
-| `gerenciar-acesso.sh` | Script | Cria grupos, aplica e revoga permissões com flags |
-| `audit-permissions.sh` | Script | Auditoria de arquivos world-writable e SUID |
-| `writeup-permissoes.md` | Writeup | chmod, chown, notação octal, cadeia de acesso |
-| `desafio-auditoria.md` | Desafio | Auditoria de permissões inseguras com find |
-
----
-
-### Fase 3 — Rede, Serviços & Processos
-**Status:** ✅ Concluída
-
-nginx, systemd, firewall com `ufw`, monitoramento de recursos e hardening de SSH.
-
-| Entrega | Tipo | Descrição |
-|---|---|---|
-| `health-check.sh` | Script | Monitor de RAM, disco e serviços com flags |
-| `nginx.conf` | Config | Configuração comentada do nginx |
-| `writeup-fase3.md` | Writeup | nginx, systemd, ufw e health check |
-| `ssh-hardening.md` | Desafio | Hardening de SSH com chave ED25519 |
+| `setup-localstack.md` | Writeup | Instalação e configuração do LocalStack |
 
 **Conceitos cobertos:**
-- Modelo master/worker do nginx
-- Diagnóstico de conflito de porta com `ss -tlnp`
-- Controle de serviços com `systemctl` — start, stop, reload, restart, enable, disable
-- Diferença entre `reload` (mantém conexões) e `restart` (recria tudo)
-- Diferença entre `stop` (para agora) e `disable` (impede boot automático)
-- Firewall com `ufw` — política `deny incoming` por padrão
-- SSH restrito por IP — evita ataques de força bruta
-- Hardening de SSH — chave ED25519, sem senha, sem root login
+- Docker como base do LocalStack
+- AWS CLI v2 + `awslocal` wrapper apontando para `localhost:4566`
+- `LOCALSTACK_AUTH_TOKEN` salvo em `.bashrc`
+- DNS do Docker corrigido em `/etc/docker/daemon.json`
+- Primeiro bucket S3 criado: `meu-primeiro-bucket`
 
 ---
 
-### Fase 4 — Automação & Projeto Final
-**Status:** 🔜 Próxima fase
+### Módulo 2 — IAM — Identidade e controle de acesso
+**Status:** ✅ Concluído
 
-`cron`, scripts avançados e deploy de um servidor LAMP completo como projeto integrador.
+Criação e gerenciamento de identidades, grupos e políticas de acesso via CLI.
 
 | Entrega | Tipo | Descrição |
 |---|---|---|
-| `backup-rotativo.sh` | Script | Backup diário com retenção de 7 dias |
-| `lamp-setup/` | Projeto | Servidor Linux+Apache+MySQL+PHP do zero |
+| `iam-guide.md` | Writeup | Users, groups, managed e custom policies |
+
+**Conceitos cobertos:**
+- IAM User (`dev-joao`) e Group (`desenvolvedores`)
+- Managed policy `AmazonS3ReadOnlyAccess` anexada ao grupo
+- Custom policy `S3RestritaBucket` criada em JSON e anexada ao usuário
+- ARN — Amazon Resource Name
+- Princípio do menor privilégio
+
+---
+
+### Módulo 3 — VPC — Rede privada na nuvem
+**Status:** ✅ Concluído
+
+Criação de uma VPC completa com subnets pública e privada, Internet Gateway e roteamento configurado via CLI.
+
+| Entrega | Tipo | Descrição |
+|---|---|---|
+| `vpc-setup.sh` | Script | Cria e destrói infraestrutura de rede com flags |
+| `vpc-guide.md` | Writeup | VPC, CIDR, subnets, IGW, route tables |
+
+**Conceitos cobertos:**
+- VPC como rede privada isolada na AWS
+- CIDR — notação de blocos de IP (`/16` = 65.536 endereços, `/24` = 256 endereços)
+- Subnet pública vs privada — propósito e configuração
+- Internet Gateway — porta de saída para a internet, precisa ser criado e anexado
+- Route Table — roteamento de tráfego por subnet (`0.0.0.0/0` → IGW)
+- `MapPublicIpOnLaunch` — IP público automático em instâncias EC2
+- LocalStack sem persistência — estado perdido ao reiniciar o container
+
+---
+
+### Módulo 4 — EC2 — Máquinas virtuais
+**Status:** ⏳ Planejado
+
+Criação de instâncias EC2, key pairs, AMIs e acesso via SSH dentro da VPC criada no módulo 3.
+
+| Entrega | Tipo | Descrição |
+|---|---|---|
+| `ec2-setup.sh` | Script | Sobe instância EC2 na subnet pública |
+| `ec2-guide.md` | Writeup | Instâncias, AMIs, key pairs, user data |
+
+---
+
+### Módulo 5 — S3 avançado
+**Status:** ⏳ Planejado
+
+Bucket policies, versionamento, prefixos e controle de acesso granular.
+
+| Entrega | Tipo | Descrição |
+|---|---|---|
+| `s3-guide.md` | Writeup | Policies de bucket, versionamento, ACLs |
+
+---
+
+### Módulo 6 — RDS — Banco de dados gerenciado
+**Status:** ⏳ Planejado
+
+Instâncias de banco de dados na subnet privada, subnet groups e acesso controlado por security groups.
+
+| Entrega | Tipo | Descrição |
+|---|---|---|
+| `rds-guide.md` | Writeup | Instâncias MySQL, subnet groups, acesso privado |
+
+---
+
+### Módulo 7 — Projeto integrador
+**Status:** ⏳ Planejado
+
+Arquitetura completa combinando todos os módulos anteriores: VPC + EC2 + RDS + S3 + IAM.
+
+| Entrega | Tipo | Descrição |
+|---|---|---|
+| `README.md` | Documento | Diagrama e documentação da arquitetura |
+| `infra-setup.sh` | Script | Provisiona toda a infraestrutura do zero |
 
 ---
 
@@ -144,16 +177,13 @@ nginx, systemd, firewall com `ufw`, monitoramento de recursos e hardening de SSH
 
 | Ferramenta | Uso |
 |---|---|
-| `bash` | Scripting e automação |
-| `find` / `grep` | Busca e filtragem de arquivos |
-| `chmod` / `chown` | Controle de permissões |
-| `groupadd` / `usermod` / `gpasswd` | Gerenciamento de usuários e grupos |
-| `nginx` | Servidor web |
-| `systemctl` | Gerenciamento de serviços |
-| `ufw` | Firewall e controle de portas |
-| `ss` | Monitoramento de portas e conexões |
-| `ssh` / `ssh-keygen` | Acesso remoto seguro e geração de chaves |
-| `cron` | Agendamento de tarefas |
+| `awslocal` | Wrapper do AWS CLI apontando para o LocalStack |
+| `aws cli v2` | Interface de linha de comando da AWS |
+| `LocalStack` | Simulador AWS local via Docker |
+| `Docker` | Container do LocalStack |
+| `ec2` | Serviço de VPC, subnets e instâncias |
+| `iam` | Gerenciamento de identidade e acesso |
+| `s3` | Armazenamento de objetos |
 
 ---
 
@@ -162,11 +192,12 @@ nginx, systemd, firewall com `ufw`, monitoramento de recursos e hardening de SSH
 Cada writeup segue esta estrutura:
 
 1. **Objetivo** — o que foi aprendido/resolvido
-2. **Contexto** — por que isso importa para um sysadmin
-3. **Passo a passo** — comandos executados com explicação de cada flag
-4. **Erros que cometi** — o que deu errado e como resolvi
-5. **Resultado** — o que foi entregue/configurado
-6. **Referências** — man pages e fontes usadas
+2. **Contexto** — por que isso importa para um cloud admin
+3. **Ambiente** — ferramentas e versões utilizadas
+4. **Passo a passo** — comandos executados com explicação de cada flag
+5. **Erros que cometi** — o que deu errado e como resolvi
+6. **Resultado** — o que foi entregue/configurado
+7. **Referências** — documentação e fontes usadas
 
 ---
 
@@ -175,40 +206,49 @@ Cada writeup segue esta estrutura:
 Clone o repositório e dê permissão de execução antes de rodar qualquer script:
 
 ```bash
-git clone https://github.com/seu-usuario/linux-sysadmin-portfolio.git
-cd linux-sysadmin-portfolio
-
-# Health check do servidor
-chmod +x fase-3-rede-servicos/scripts/health-check.sh
-./fase-3-rede-servicos/scripts/health-check.sh
-
-# Com flags
-./fase-3-rede-servicos/scripts/health-check.sh -s   # só serviços
-./fase-3-rede-servicos/scripts/health-check.sh -r   # só recursos
+git clone https://github.com/johnthesec/aws-cloud-practitioner.git
+cd aws-cloud-practitioner
 ```
 
-> **Atenção:** scripts das fases 2 e 3 envolvem criação de usuários e alteração de serviços. Leia o writeup correspondente antes de executar em produção.
+**Subindo o ambiente LocalStack:**
+```bash
+sudo service docker start
+docker start localstack
+sleep 15 && curl -s http://localhost:4566/_localstack/health | python3 -m json.tool | grep ec2
+```
+
+**Módulo 3 — Criando a infraestrutura de rede:**
+```bash
+chmod +x modulo-3-vpc/scripts/vpc-setup.sh
+./modulo-3-vpc/scripts/vpc-setup.sh        # cria tudo
+./modulo-3-vpc/scripts/vpc-setup.sh -d     # destrói tudo
+./modulo-3-vpc/scripts/vpc-setup.sh -h     # ajuda
+```
+
+> **Atenção:** o LocalStack não persiste estado entre reinicializações do container. Ao reiniciar, rode o script novamente para recriar a infraestrutura.
 
 ---
 
 ## 📈 Progresso
 
-- [x] Repositório criado e estruturado
-- [x] Fase 1 concluída
-- [x] Fase 2 concluída
-- [x] Fase 3 concluída
-- [ ] Fase 4 e projeto final concluídos
+- [x] Módulo 1 — Ambiente & S3 básico concluído
+- [x] Módulo 2 — IAM concluído
+- [x] Módulo 3 — VPC concluído
+- [ ] Módulo 4 — EC2
+- [ ] Módulo 5 — S3 avançado
+- [ ] Módulo 6 — RDS
+- [ ] Módulo 7 — Projeto integrador
 
 ---
 
 ## 📬 Contato
 
-Feito por **[seu nome]** — estudando Linux para administração de servidores.  
+Feito por **João** — estudando AWS para administração de servidores em nuvem.  
 Aberto a feedbacks, sugestões e conexões!
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin)](https://linkedin.com/in/seu-perfil)
-[![GitHub](https://img.shields.io/badge/GitHub-black?style=flat&logo=github)](https://github.com/seu-usuario)
+[![GitHub](https://img.shields.io/badge/GitHub-black?style=flat&logo=github)](https://github.com/johnthesec)
 
 ---
 
-*Última atualização: 2026-04-08*
+*Última atualização: 2026-04-28*
